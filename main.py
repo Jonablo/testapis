@@ -5,11 +5,12 @@ from typing import Optional
 from test_ia.openiatest import Document, inference
 from test_ia.contvocal import Document, conta
 from test_ia.conBi import Document, conBi
+from test_ia.calcuFact import Document, calcuFact
 
 app = FastAPI()
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8888)
+    uvicorn.run("main:app", port=9099)
 
 class libro(BaseModel):
     titulo: str
@@ -49,3 +50,9 @@ def conta_endpoint(doc: Document):
 def conBi_endpoint(doc: Document):
     response = conBi(doc.prompt)
     return {"respuesta": response[0], "tokens usados": response[1]}
+
+@app.post("/calcuFact", status_code=200)
+def calcuFact_endpoint(doc: Document):
+    response = calcuFact(doc.prompt)
+    print (response[0], response[1])
+    return {"el factorial":response[0], "tokens total usados":response[1]}

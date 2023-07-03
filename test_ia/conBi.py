@@ -3,7 +3,7 @@ import openai
 from pydantic import BaseModel
 
 openai.organization = "org-F7xuajFc7l00rI8djb2p72b9"
-openai.api_key = "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"
+openai.api_key = "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"
 print("[PROCESANDO INFO...]".center(40, "-"))
 
 
